@@ -1,5 +1,5 @@
 import React from 'react';
-import selfImage from '../assets/self.jpg';
+import selfImage from '../assets/story.jpg';
 
 const Page2 = () => {
   return (
@@ -21,26 +21,28 @@ const Page2 = () => {
           {/* Đường thẳng dưới */}
           <div className="flex-grow border-l-2 border-white"></div>
         </div>
-
-        {/* Nội dung bên phải */}
-        <div className="flex flex-1 flex-col md:flex-row p-8 text-white">
-          {/* Hình ảnh */}
-          <div className="w-1/3 flex justify-center items-center">
+        <div className="w-1/3 flex justify-start items-start">
             <img
               src={selfImage} // Thay đường dẫn bằng hình ảnh của bạn
               alt="Story Image"
               className="rounded-xl shadow-lg h-full object-cover"
             />
           </div>
+        {/* Nội dung bên phải */}
+        <div className="flex flex-1 flex-col md:flex-row p-8 text-white">
+          {/* Hình ảnh */}
+        
 
           {/* Text nội dung */}
-          <div className="w-2/3 pl-8 flex flex-col justify-center">
+          <div className="w-fit pl-2 flex flex-col justify-center">
             {/* Tiêu đề */}
-            <div className="flex items-center">
           <h1 className="text-4xl font-noto-bold mb-4">From Struggles</h1>
           <span className="mx-2"></span>
-          <h1 className="text-4xl font-noto-bold mb-4 text-customOrange">to Strength</h1>
-        </div>
+          <div className="flex flex-col items-end">
+
+          <p className="text-5xl font-noto-bold mb-4 text-customOrange">to Strength</p>
+          </div>
+
 
             <h2 className="text-2xl mb-8 font-noto">
               My Journey to an MBA Dream

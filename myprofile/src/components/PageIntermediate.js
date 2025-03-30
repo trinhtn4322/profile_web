@@ -1,5 +1,5 @@
 import React from 'react';
-import backgroundImage from '../assets/R.jpg';
+import backgroundImage from '../assets/family.png';
 
 const PageIntermediate = () => {
   return (
@@ -16,7 +16,7 @@ const PageIntermediate = () => {
       {/* Lớp phủ chuyển động */}
       <div className="relative w-full h-full">
         {/* Nội dung lớp phủ */}
-        <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-80 animate-slide"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-60 animate-slide"></div>
 
         {/* Câu nói */}
         <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center p-24">

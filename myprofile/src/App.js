@@ -25,7 +25,7 @@ const App = () => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative bg-black">
       {/* Header */}
       <Header />
       <div>

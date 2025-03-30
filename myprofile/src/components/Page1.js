@@ -28,27 +28,29 @@ const Page1 = () => {
         <div className="flex justify-center items-center w-1/7">
           <div className="flex flex-col items-center">
             <div className="border-l-2 border-white h-24"></div>
-            <FaFacebook size={30} className="mt-4 text-customOrange cursor-pointer  hover:text-blue-500" />
 
             {/* Các biểu tượng liên kết dưới Facebook */}
             <div className="flex flex-col items-center mt-6 space-y-4">
               {/* Biểu tượng Email */}
-              <a href="mailto:trinhnhattran@gmail.com" className="text-2xl  text-customOrange  hover:text-blue-500">
+              <a href="https://www.facebook.com/linkfacecuatrinh" className="text-2xl  text-customOrange hover:text-blue-500">
+                <FaFacebook />
+              </a>
+              <a href="mailto:trinhtn4322@gmail.com" className="text-2xl  text-customOrange  hover:text-blue-500">
                 <TbMailFilled />
               </a>
 
               {/* Biểu tượng Phone */}
-              <a href="tel:+1234567890" className="text-2xl  text-customOrange hover:text-blue-500">
+              <a href="tel:+84364687376" className="text-2xl  text-customOrange hover:text-blue-500">
                 <FaPhoneAlt />
               </a>
 
               {/* Biểu tượng LinkedIn */}
-              <a href="https://www.linkedin.com/in/trinhnhattran" target="_blank" rel="noopener noreferrer" className="text-2xl  text-customOrange hover:text-blue-500">
+              <a href="https://www.linkedin.com/in/tr%C3%ACnh-tn-440469271/" target="_blank" rel="noopener noreferrer" className="text-2xl  text-customOrange hover:text-blue-500">
                 <ImLinkedin />
               </a>
 
               {/* Biểu tượng GitHub */}
-              <a href="https://github.com/trinhnhattran" target="_blank" rel="noopener noreferrer" className="text-3xl text-customOrange hover:text-blue-500">
+              <a href="https://github.com/trinhtn432" target="_blank" rel="noopener noreferrer" className="text-3xl text-customOrange hover:text-blue-500">
                 <FaSquareGithub />
               </a>
             </div>

@@ -8,7 +8,7 @@ import { TbRobot } from "react-icons/tb";
 
 const Chatbot = () => {
   const [messages, setMessages] = useState([
-    { sender: "user2", text: "XIN CHÀO TRUNG LÂM BOT CÓ THỂ GIÚP BẠN ĐIỀU GÌ ?" },
+    { sender: "user2", text: "XIN CHÀO BẠN CẦN BIẾT THÔNG TIN GÌ VỀ TRÌNH ?" },
   ]);
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -153,23 +153,42 @@ const handleDragLeave = () => setIsDragging(false);
     scrollToBottom();
   }, [messages]);
 
+
   const fetchChatbotResponse = async (query) => {
-    setIsLoading(true);
-    try {
-      const response = await axios.post("http://localhost:5005/webhooks/rest/webhook", {
-        sender: "user",
-        message: query,
+  setIsLoading(true);
+  try {
+    const data = {
+      contents: [
+        {
+          parts: [
+            {
+              text: `Bạn là một chatbot hỗ trợ TRẦN NHẬT TRÌNH xin học bổng MBA tại Đài Loan,đây là câu hỏi ${query} hãy trả lời thật ngắn gọn bằng tiếng anh dựa trên thông tin có trong tài liệu dưới đây. Tài liệu chứa thông tin chi tiết về ứng viên, bao gồm các thông tin cá nhân, thành tích học tập, các hoạt động ngoại khóa, kỹ năng, và lý do ứng viên muốn nhận học bổng. tài liệu: Personal Information: Name: Trinh Nhat Tran, Address: 6/213, Le Loi Street, Da Huoai District, Lam Dong Province, Vietnam, Code: 670000, Phone: +84 364687376, Email: trinhtn4322@gmail.com, Date of Birth: 04-03-2002. Family Information: Father's Name: Tuan Thanh Tran, Mother's Name: Thuy Diem Pham Thi, Phone: +84 908332902, Area Code: 263, Email: diemthuy1965@gmail.com. Education: Institution: FPT University, Degree: Bachelor, Major: Information Technology - Artificial Intelligence, Start Date: 09-2020, End Date: 12-2024, TOEIC Score: 825, Address: Long Thạnh Mỹ, Thu Duc City, Ho Chi Minh City. Full-time Work Experience: 1. WISKY COMPANY LIMITED - Position: AI Engineer, From: 09-2023 to 12-2023, Location: Ho Chi Minh City, Responsibilities: Participate in a company project - Project: Auto Retail Checkout for Food Shop, Read and research papers related to the project, Prepare and process data, Collaborate with team members, test and train models. 2. Fintech Innovation Solutions Joint Stock Company - Position: AI Engineer, From: 04-2024 to 09-2024, Location: Ho Chi Minh City, Responsibilities: Head of AI Department, Mainly responsible for the company's AI projects, Work and communicate with other departments. Why do you want to study in Taiwan? My background is as an AI Engineer, and more than anyone, I understand the power of semiconductor chips, and no place is more famous for them than Taiwan. This is the first reason why I became aware of Taiwan. The more I researched, the more I discovered interesting facts about Taiwan, such as it being a highly developed country in Asia that invests a lot in Vietnam. Most notably, its outstanding education system. Why National Tsing Hua University? When applying for the IMBA scholarship in Taiwan, I had many schools to choose from, and honestly, I can’t remember all of them. However, when I read reviews about National Tsing Hua University, I was extremely impressed by its educational system and the rigor of the school. It aligns perfectly with my life motto: "Smooth seas never make skillful sailors." What drives your passion for this field? I never imagined I would become a leader, let alone a team leader, but life pushed me into leadership roles in the teams I’ve been a part of. I realized that it wasn’t by chance; it’s in my nature to lead those teams. Furthermore, I’ve always had the desire to start a business or do something entrepreneurial. My brother and I once started a business selling goods, but after a few months, it failed. I witnessed him crying with our mother to ask for money to pay off debts, and that made me rethink things. Courage and luck are important factors for success, but above all, knowledge is key, and there’s no better place to gain that knowledge than a university environment. What experiences (academic, work, or personal) have motivated you to pursue this field? Growing up in a poor family, constantly facing financial challenges, made me obsessed with making money. However, my mother always encouraged me to live within a safe zone, doing whatever job I could to survive and support myself. I have worked as a security guard, a salesperson, and as an AI project manager for a company. But in my mind, I kept asking, "Why am I here?" Is chasing money and living in a safe world truly what I want? And now, my greatest achievement is daring to give up everything to follow my true passion. Short-term Goals (2-3 years): My goal at National Tsing Hua University is to complete the 10 mandatory courses in economics and management as quickly as possible with high marks. The second goal is to choose a major in Information Technology, which is my strength, while also leveraging Taiwan’s key semiconductor industry to benefit my future. Skills and Knowledge I Want to Learn: Business management skills, Technology management skills, Semiconductor knowledge, Chinese language. Plans for Research, Projects, or Clubs: I want to participate in research related to data and AI, as these are my strengths. I also hope to have the opportunity to exchange to a European country. Long-term Goals (5-10 years): My long-term goal is to build a network with outstanding individuals and companies in Taiwan by staying and working there for a period of time. National Tsing Hua University is home to many professors and PhDs who have received major awards, making it an ideal environment to build networks that will serve my startup. Future Career: Entrepreneurship: Before deciding to study abroad, my associates and I planned to start a business in AI and semiconductors and bridge the gap between Vietnam and Taiwan. Therefore, pursuing an MBA abroad is not only the first step but also the most important step in my future career. Once I have gained sufficient experience and network in Taiwan, I plan to become a connector between my associates in Vietnam and Taiwan.`,
+            },
+          ],
+        },
+      ],
+    };
+
+    const response = await axios.post(
+      "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyDAFVuysO3qXZxc8ID7BluBAhQSNMS9Kvo", data, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
       });
+      
   
       // Nếu API trả về danh sách phản hồi
-      if (response.data.length > 0) {
-        return response.data.map((message) => message.text || "Tin nhắn rỗng từ bot");
+      const chatbotReply =
+      response.data?.candidates?.[0]?.content?.parts?.map((part) => part.text) || [];
+      if (chatbotReply.length > 0) {
+        
+    return chatbotReply.length > 0 ? chatbotReply : ["Không có phản hồi từ chatbot"];
       } else {
         return ["Có lỗi xảy ra, vui lòng thử lại sau."];
       }
     } catch (error) {
       console.error("Error calling backend API:", error);
-      return ["Có lỗi xảy ra, vui lòng thử lại sau."];
+      return ["Có lỗi xảy ra, vui lòng thử lại sau.11"];
     } finally {
       setIsLoading(false);
     }

@@ -5,30 +5,37 @@ import { useSpring, animated } from "@react-spring/web";
 const documents = [
   {
     id: 1,
-    title: "Tài liệu 1",
+    title: "Curriculum vitae",
     description:
-      "Đây là mô tả ngắn gọn về tài liệu 1. Bạn có thể tải xuống nó từ liên kết dưới đây.",
+      "A comprehensive summary of personal information, academic background with a GPA of 7.89/10, English proficiency (TOEIC 825 – equivalent to B1), 2 years of professional experience, and notable achievements during studies at FPT University.",
     link: "https://drive.google.com/file/d/1KwRn6rENlStWZcBJjMChVK4k05W8w53G/view?usp=sharing"
   },
   {
     id: 2,
-    title: "Tài liệu 2",
+    title: "Essay",
     description:
-      "Đây là mô tả ngắn gọn về tài liệu 2. Bạn có thể tải xuống nó từ liên kết dưới đây.",
+      "A personal statement highlighting aspirations for pursuing an MBA, career development goals, and a heartfelt story of overcoming family hardships to grow into the best version of oneself.",
     link: "https://drive.google.com/file/d/1KwRn6rENlStWZcBJjMChVK4k05W8w53G/view?usp=sharing"
   },
   {
     id: 3,
-    title: "Tài liệu 3",
+    title: "English Certificate",
     description:
-      "Đây là mô tả ngắn gọn về tài liệu 3. Bạn có thể tải xuống nó từ liên kết dưới đây.",
+      "TOEIC 825 certification, demonstrating strong English communication skills that meet international academic standards.",
     link: "https://drive.google.com/file/d/1KwRn6rENlStWZcBJjMChVK4k05W8w53G/view?usp=sharing"
   },
   {
     id: 4,
-    title: "Tài liệu 4",
+    title: "Diploma",
     description:
-      "Đây là mô tả ngắn gọn về tài liệu 4. Bạn có thể tải xuống nó từ liên kết dưới đây.",
+      "A bachelor’s degree from FPT University with a GPA of 7.89/10, reflecting dedication and perseverance throughout the academic journey.",
+    link: "https://drive.google.com/file/d/1KwRn6rENlStWZcBJjMChVK4k05W8w53G/view?usp=sharing"
+  },
+  {
+    id: 5,
+    title: "Study Plan",
+    description:
+      "A well-defined plan emphasizing how the MBA program will be a stepping stone to achieving career aspirations while contributing meaningful value to society and the community.",
     link: "https://drive.google.com/file/d/1KwRn6rENlStWZcBJjMChVK4k05W8w53G/view?usp=sharing"
   },
 ];
@@ -55,8 +62,11 @@ const Page5 = () => {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white flex justify-center items-center py-12">
+    <div className="min-h-screen bg-black text-white flex flex-col justify-start items-center py-12 "> 
+      <p className="text-3xl font-noto-regu text-customOrange ">"The boy who once received help from others now knows how to help others."</p>
+    <div className="flex justify-center items-center py-12 ">
       {/* Background bao quanh nội dung */}
+     
       <div className="bg-gray-800 rounded-xl shadow-lg p-8 w-full max-w-screen-lg">
         <div className="flex flex-col md:flex-row w-full space-y-6 md:space-y-0">
           {/* Left Panel: List of Document Titles */}
@@ -80,7 +90,7 @@ const Page5 = () => {
             <div className="w-full p-6">
               {/* Áp dụng hiệu ứng chuyển động fade */}
               <animated.div style={fade} key={key}> {/* Dùng key để tái render */}
-                <h2 className="text-3xl font-noto-regu mb-4">{selectedDocument.title}</h2>
+                <h2 className="text-3xl font-noto-regu text-customOrange mb-4">{selectedDocument.title}</h2>
                 <p className="text-lg mb-6 font-notose-light">{selectedDocument.description}</p>
                 <a
                   href={selectedDocument.link}
@@ -92,6 +102,7 @@ const Page5 = () => {
               </animated.div>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </div>
